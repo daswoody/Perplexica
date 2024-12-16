@@ -19,7 +19,7 @@ services:
     depends_on:
       - searxng
     ports:
-      - 3001:3001
+      - 3101:3101
     volumes:
       - backend-dbstore:/home/perplexica/data
       - uploads:/home/perplexica/uploads
@@ -35,13 +35,13 @@ services:
       context: .
       dockerfile: app.dockerfile
       args:
-        - NEXT_PUBLIC_API_URL=http://127.0.0.1:3001/api
-        - NEXT_PUBLIC_WS_URL=ws://127.0.0.1:3001
+        - NEXT_PUBLIC_API_URL=http://127.0.0.1:3101/api
+        - NEXT_PUBLIC_WS_URL=ws://127.0.0.1:3101
     image: itzcrazykns1337/perplexica-frontend:main
     depends_on:
       - perplexica-backend
     ports:
-      - 3000:3000
+      - 3100:3100
     networks:
       - perplexica-network
     restart: unless-stopped
